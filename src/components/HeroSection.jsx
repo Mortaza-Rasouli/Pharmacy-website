@@ -2,18 +2,20 @@ import { BsCart4 } from "react-icons/bs";
 
 export default function HeroSection() {
   const data = {
-    title: "Your Prescription for Affordable Health Solutions!",
+    title: `Your Prescription for
+     Affordable Health
+     Solutions!`,
     desc: `Elevate your health journey with exclusive discounts and unparalleled
      convenience. Your path to well-being starts here, where every purchase
       is a prescription for savings.`,
     btnText: "Start Shopping",
-    img: "../../public/doctor.png",
+    img: "../../public/images/doctor.png",
   };
   return (
     <>
-      <div className="bg-[#304D30] h-122.5 flex">
-        <div className="pl-20 pt-12 space-y-6">
-          <h1 className="text-[#FFFFFF] font-extrabold text-6xl leading-tight">
+      <div className="bg-[#304D30] h-122.5 flex relative">
+        <div className="pl-15 pt-12 space-y-6">
+          <h1 className="text-[#FFFFFF] font-extrabold whitespace-pre-line text-6xl leading-tight">
             {data.title}
           </h1>
           <p className="text-[#CCE5FF] font-normal text-[16px] whitespace-pre-line">
@@ -28,7 +30,10 @@ export default function HeroSection() {
           </button>
         </div>
 
-        <img className="h-122 w-250 rotate-y-180 mr-20" src={data.img} alt="" />
+        <img
+          className="h-122.5 w-130 absolute rotate-y-180 left-168"
+          src={data.img}
+        />
       </div>
     </>
   );

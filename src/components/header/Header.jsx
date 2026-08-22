@@ -10,7 +10,7 @@ export default function Header() {
           {/* name web and logo */}
 
           <div className="flex text-[#28A745] pl-16 py-10 ">
-            <img src="../../public/Mask group.png" className="h-15 pr-2" />
+            <img src="../../public/images/Mask group.png" className="h-15 pr-2" />
             <div className="flex flex-col">
               <h1 className="mt-1 p-0 font-extrabold text-4xl leading-none">
                 Medico
@@ -30,7 +30,7 @@ export default function Header() {
             <div className="flex justify-center items-center space-x-1">
               <img
                 className="w-11.5 h-11.5 rounded-3xl border border-[#6666666E]"
-                src="../../public/userDefault.png"
+                src="../../public/images/userDefault.png"
                 alt=""
               />
               <span className="text-[#666666]">▼</span>
