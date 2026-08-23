@@ -1,43 +1,41 @@
 import { IoBagOutline } from "react-icons/io5";
 
-export default function PopularProducts() {
+export default function TopProducts() {
   const data = [
     {
       id: 1,
-      img: "../../public/images/OxygenMask.png",
+      img: "../../public/images/HospitalBed.png",
       imgClass: "w-58 h-58",
-      name: "Foley Catheter",
-      price: `${2}.00`,
+      name: "Hospital Bed",
+      price: 109.89,
     },
     {
       id: 2,
-      img: "../../public/images/SurgicalGloves.png",
-      imgClass: "w-50 h-58",
-      name: "Surgical Gloves",
-      price: 1.99,
+      img: "../../public/images/WalkerMobility.png",
+      imgClass: "w-33 h-58",
+      name: "Walker Mobility",
+      price: 12.80,
     },
     {
       id: 3,
-      img: "../../public/images/MedicalMask.png",
-      imgClass: "h-58",
-      name: "Medical Mask",
-      price: 0.89,
+      img: "../../public/images/Wheelchair.png",
+      imgClass: "w-58 h-52",
+      name: "Wheelchair",
+      price: 30.0,
     },
     {
       id: 4,
-      img: "../../public/images/HandSanitizer.png",
-      imgClass: "w-50 h-58",
-      name: "Hand Sanitizer",
-      price: `${4}.00`,
+      img: "../../public/images/Crutches.png",
+      imgClass: "w-50 h-52",
+      name: "Crutches",
+      price: 24.78,
     },
   ];
   return (
     <>
-      <div className="flex flex-col mt-12 px-14">
+      <div className="flex flex-col mt-15 px-14">
         <div className="flex justify-between items-center pb-4">
-          <h1 className="text-[#020A13] font-bold text-3xl ">
-            Popular Products
-          </h1>
+          <h1 className="text-[#020A13] font-bold text-3xl ">Top Products </h1>
           <button className="text-[#28A745] font-bold text-[16px]">
             View All →
           </button>

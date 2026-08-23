@@ -31,14 +31,14 @@ export default function Offers() {
   ];
 
   return (
-    <div className="flex space-x-5 my-10 justify-center items-center">
+    <div className="flex space-x-5 mt-12 justify-center items-center">
       {data.map((item) => (
         <div
           key={item.id}
           className={`flex items-center justify-between ${item.bg} w-68 h-25 rounded-xl`}
         >
           <div className="flex justify-center items-center space-x-3 pl-3">
-            <img src={item.icon} className="w-7.5 h-8" />
+            <img src={item.icon} className="w-7.5 h-8 object-contain" />
 
             <h3 className="text-[#020A13] font-bold text-[18px] whitespace-pre-line">
               {item.title}

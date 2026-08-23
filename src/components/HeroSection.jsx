@@ -31,7 +31,7 @@ export default function HeroSection() {
         </div>
 
         <img
-          className="h-122.5 w-130 absolute rotate-y-180 left-168"
+          className="h-122.5 w-130 object-contain absolute rotate-y-180 left-168"
           src={data.img}
         />
       </div>
