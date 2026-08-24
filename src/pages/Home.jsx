@@ -1,4 +1,5 @@
 import FiftyPercentOff from "../components/FiftyPercentOff";
+import Footer from "../components/Footer";
 import Header from "../components/header/Header";
 import HeroSection from "../components/HeroSection";
 import MedicalProducts from "../components/MedicalProducts";
@@ -21,12 +22,13 @@ export default function Home() {
         <NewProducts />
         <PopularProducts />
         <OffersProducts />
-        <TopProducts />
+        {/* <TopProducts />
         <Statistics />
         <MedicalProducts />
         <UpcomingProducts />
         <FiftyPercentOff />
         <NewsAndBlogs />
+        <Footer /> */}
       </div>
     </>
   );
