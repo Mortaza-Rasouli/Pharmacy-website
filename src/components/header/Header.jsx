@@ -49,13 +49,13 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex items-center justify-center gap-5 mr-8">
           <div className="relative">
-            <GoHeart className="text-[#666666] w-5 h-5 min-[330px]:w-6 min-[330px]:h-6" />
+            <GoHeart className="text-[#666666] w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-103" />
             <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold">
               0
             </span>
           </div>
           <div className="relative">
-            <BsCart4 className="text-[#666666] w-5 h-6" />
+            <BsCart4 className="text-[#666666] w-5 h-6 hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-105" />
             <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold">
               0
             </span>

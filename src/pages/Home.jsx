@@ -22,13 +22,13 @@ export default function Home() {
         <NewProducts />
         <PopularProducts />
         <OffersProducts />
-        {/* <TopProducts />
+        <TopProducts />
         <Statistics />
         <MedicalProducts />
         <UpcomingProducts />
         <FiftyPercentOff />
         <NewsAndBlogs />
-        <Footer /> */}
+        <Footer /> 
       </div>
     </>
   );

@@ -46,16 +46,18 @@ export default function NewProducts() {
         {data.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col h-95 min-[330px]:h-100 sm:h-105 md:h-98 lg:h-98 w-full items-center bg-[#FFFFFF] rounded-xl shadow drop-shadow-xl overflow-hidden"
+            className="flex flex-col h-95 min-[330px]:h-100 sm:h-105 md:h-98 lg:h-98 w-full items-center
+            bg-[#FFFFFF] rounded-xl shadow drop-shadow-xl overflow-hidden
+            hover:cursor-pointer transition-all duration-300 ease-linear hover:-translate-y-2  hover:shadow-xl"
           >
             <div className="flex items-center justify-center h-60 md:h-57 lg:h-58 w-full shrink-0">
               <img
-                className={`${item.imgClass} object-contain max-w-[80%] max-h-full`}
+                className={`${item.imgClass} object-contain  max-w-[80%] max-h-full`}
                 src={item.img}
                 alt={item.name}
               />
             </div>
-            <div className="w-full h-20 p-3 space-y-1 border-t border-[#E8E8E8] shrink-0">
+            <div className="w-full  p-3 space-y-1 border-t border-[#E8E8E8] shrink-0">
               <h1 className="font-bold text-lg min-[330px]:text-xl sm:text-2xl md:text-xl lg:text-2xl text-[#020A13] truncate">
                 {item.name}
               </h1>
@@ -63,7 +65,11 @@ export default function NewProducts() {
                 ${item.price}
               </p>
             </div>
-            <button className="flex justify-center gap-2 items-center text-[#FFFFFF] font-bold text-[14px] sm:text-[16px] bg-[#28A745] w-full h-10 min-h-10 rounded-b-xl shrink-0 mt-auto">
+            <button
+              className="flex justify-center gap-2 items-center text-[#FFFFFF] font-bold
+             text-[14px] sm:text-[16px] bg-[#28A745] w-full h-10 min-h-10 
+             rounded-b-xl shrink-0 mt-auto outline-none hover:cursor-pointer"
+            >
               Add to Cart <IoBagOutline />
             </button>
           </div>

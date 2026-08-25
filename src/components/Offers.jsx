@@ -35,7 +35,9 @@ Advice`,
       {data.map((item) => (
         <div
           key={item.id}
-          className={`flex items-center justify-between ${item.bg} w-full sm:w-full md:w-full lg:w-68 h-20 min-[330px]:h-25 rounded-xl`}
+          className={`flex items-center justify-between ${item.bg} w-full sm:w-full
+           md:w-full lg:w-68 h-20 min-[330px]:h-25 rounded-xl 
+           hover:cursor-pointer transition-all duration-300 ease-linear hover:-translate-y-1.5 hover:shadow-xl`}
         >
           <div className="flex justify-center items-center space-x-3 pl-3">
             <img src={item.icon} className="w-7.5 h-8 object-contain" />

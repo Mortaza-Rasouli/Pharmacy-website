@@ -14,6 +14,7 @@ export default function Footer() {
       email: "sajiburdemo121@gmail.com",
     },
   ];
+
   const data = [
     {
       id: 1,
@@ -37,103 +38,123 @@ export default function Footer() {
       items: ["Medical", "Operation", "Laboratory", "ICU", "Patient Ward"],
     },
   ];
+
   return (
-    <>
-      <div className="bg-[#304A2F] flex flex-col  justify-center  mt-12 min-h-100 w-full">
-        <div className="mx-14 flex gap-20 py-10 border-b border-[#FFFFFF3B]">
-          {/* contact */}
-          <div>
+    <footer className="w-full bg-[#304A2F] mt-8 min-[330px]:mt-10 sm:mt-12">
+      <div className="mx-4 min-[330px]:mx-5 sm:mx-6 md:mx-8 lg:mx-14 py-8 min-[330px]:py-10 sm:py-12">
+        <div
+          className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-4 gap-8 min-[330px]:gap-9 sm:gap-10 md:gap-6
+            lg:flex lg:flex-row lg:gap-20 py-0 pb-8 min-[330px]:pb-10 lg:py-10 lg:pb-10
+            border-b border-[#FFFFFF3B]"
+        >
+          <div className="min-w-0 lg:shrink-0">
             {dataContact.map((item) => (
               <div
                 key={item.id}
                 className="space-y-3 flex flex-col items-start"
               >
-                <h1 className="text-[#FFFFFF] mb-4 font-semibold text-[20px]">
+                <h1 className="text-[#FFFFFF] mb-2 min-[330px]:mb-3 lg:mb-4 font-semibold text-[18px] min-[330px]:text-[20px]">
                   {item.title}
                 </h1>
-                <p className="flex justify-center items-center gap-2 text-[16px] font-medium text-[#E0EEF9]">
-                  <span>
-                    <IoLocationOutline />
-                  </span>
-                  {item.address}
+
+                <p className="flex items-start gap-2 text-[13px] min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px] font-medium text-[#E0EEF9] leading-5">
+                  <IoLocationOutline className="w-4 h-4 min-[330px]:w-5 min-[330px]:h-5 shrink-0 mt-0.5" />
+                  <span>{item.address}</span>
                 </p>
-                <p className="flex justify-center items-center gap-2 text-[16px] font-medium text-[#E0EEF9]">
-                  <span>
-                    <FaPhoneAlt />
-                  </span>
-                  +{item.phoneNumber}
+
+                <p className="flex items-center gap-2 text-[13px] min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px] font-medium text-[#E0EEF9]">
+                  <FaPhoneAlt className="w-3.5 h-3.5 min-[330px]:w-4 min-[330px]:h-4 shrink-0" />
+                  <span>+{item.phoneNumber}</span>
                 </p>
-                <p className="flex justify-center items-center gap-2 text-[16px] font-medium text-[#E0EEF9]">
-                  <span>
-                    <MdOutlineMail />
-                  </span>
-                  {item.email}
+
+                <p className="flex items-start gap-2 text-[13px] min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px] font-medium text-[#E0EEF9] break-all">
+                  <MdOutlineMail className="w-4 h-4 min-[330px]:w-5 min-[330px]:h-5 shrink-0 mt-0.5" />
+                  <span>{item.email}</span>
                 </p>
               </div>
             ))}
           </div>
 
-          {/* other sections */}
-          <div className="flex gap-20">
+          <div
+            className="
+              flex flex-co l sm:contents md:contents lg:flex lg:flex-row lg:gap-20"
+          >
             {data.map((item) => (
-              <div className="space-y-4" key={item.id}>
-                <h1 className="text-[#FFFFFF] font-semibold text-[20px]">
-                  {item.title}
-                </h1>
-                <div className="space-y-3">
-                  {item.items.map((item) => (
-                    <p
-                      key={item}
-                      className="text-[#E0EEF9] font-medium text-[16px]"
-                    >
-                      {item}
-                    </p>
-                  ))}
+              <div key={item.id} className="min-w-0">
+                <div className="lg:space-y-3 min-[330px]:space-y-2 mb-5">
+                  <h1 className="text-[#FFFFFF] font-semibold text-[18px] min-[330px]:mt min-[330px]:text-[20px]">
+                    {item.title}
+                  </h1>
+
+                  <div className="space-y-2 min-[330px]:space-y-2">
+                    {item.items.map((item) => (
+                      <p
+                        key={item}
+                        className="text-[#E0EEF9] hover:cursor-pointer font-medium text-[13px] min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px]"
+                      >
+                        {item}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* social media */}
-          <div className="space-y-4">
-            <h1 className="text-[#FFFFFF] font-semibold text-[20px]">
-              Social Media
-            </h1>
-            <div className="flex gap-5">
-              <div className="w-10 h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
-                <FaFacebookF className="w-6 h-6 text-[#FFFFFF]" />
-              </div>
-              <div className="w-10 h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
-                <FaLinkedinIn className="w-6 h-6 text-[#FFFFFF]" />
-              </div>
+          <div className="min-w-0 lg:shrink-0">
+            <div className="space-y-3 min-[330px]:space-y-4">
+              <h1 className="text-[#FFFFFF] font-semibold text-[18px] min-[330px]:text-[20px]">
+                Social Media
+              </h1>
 
-              <div className="w-10 h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
-                <FiInstagram className="w-6 h-6 text-[#FFFFFF]" />
-              </div>
+              <div className="flex flex-wrap gap-3 min-[330px]:gap-4 lg:gap-5">
+                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                  <FaFacebookF className="w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 text-[#FFFFFF]" />
+                </div>
 
-              <div className="w-10 h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
-                <AiFillYoutube className="w-7 h-6 text-[#FFFFFF]" />
+                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                  <FaLinkedinIn className="w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 text-[#FFFFFF]" />
+                </div>
+
+                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                  <FiInstagram className="w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 text-[#FFFFFF]" />
+                </div>
+
+                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                  <AiFillYoutube className="w-6 h-5 min-[330px]:w-7 min-[330px]:h-6 text-[#FFFFFF]" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* ===== */}
-        <div className="flex justify-between items-center mx-14 mt-7">
-          <p className="text-[#E0EEF9] text-16px] font-normal">
+
+        <div
+          className="
+            flex flex-col
+            min-[330px]:flex-col
+            sm:flex-row
+            justify-between
+            items-start sm:items-center
+            gap-3 min-[330px]:gap-4 sm:gap-5
+            pt-6 min-[330px]:pt-7 sm:pt-8
+            lg:mt-0
+          "
+        >
+          <p className="text-[#E0EEF9] text-[11px] min-[330px]:text-[12px] sm:text-[14px] lg:text-[16px] font-normal">
             © 2023 HEALTHY. All rights reserved.
           </p>
 
-          <div className="flex gap-5">
-            <p className="text-[#E0EEF9] text-[16px] font-normal">
+          <div className="flex flex-col min-[330px]:flex-row gap-2 min-[330px]:gap-4 sm:gap-5">
+            <p className="text-[#E0EEF9] text-[11px] min-[330px]:text-[12px] sm:text-[14px] lg:text-[16px] font-normal">
               Terms and Conditions
             </p>
-            <p className="text-[#E0EEF9] text-16px] font-normal">
+
+            <p className="text-[#E0EEF9] text-[11px] min-[330px]:text-[12px] sm:text-[14px] lg:text-[16px] font-normal">
               Privacy Policy
             </p>
           </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 }

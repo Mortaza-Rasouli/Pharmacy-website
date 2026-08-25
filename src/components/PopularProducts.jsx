@@ -46,7 +46,9 @@ export default function PopularProducts() {
         {data.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col h-95 min-[330px]:h-100 sm:h-105 md:h-98 lg:h-98 w-full items-center bg-[#FFFFFF] rounded-xl shadow drop-shadow-xl overflow-hidden"
+            className="flex flex-col h-95 min-[330px]:h-100 sm:h-105 md:h-98 lg:h-98 
+            w-full items-center bg-[#FFFFFF] rounded-xl shadow drop-shadow-xl overflow-hidden
+             hover:cursor-pointer transition-all duration-300 ease-linear hover:-translate-y-2  hover:shadow-xl"
           >
             <div className="flex items-center justify-center h-60 md:h-57 lg:h-58 w-full shrink-0">
               <img

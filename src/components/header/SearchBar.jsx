@@ -19,7 +19,9 @@ export default function SearchBar() {
         <button
           type="button"
           aria-label="Search"
-          className="shrink-0 flex items-center justify-center bg-[#28A745] text-white h-11 w-11 min-[330px]:h-12 min-[330px]:w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 text-lg min-[330px]:text-xl sm:text-2xl rounded-lg"
+          className="shrink-0 flex items-center justify-center bg-[#28A745] text-white h-11 w-11
+           min-[330px]:h-12 min-[330px]:w-12 sm:h-14 sm:w-14 lg:h-16 lg:w-16 text-lg min-[330px]:text-xl 
+           sm:text-2xl rounded-lg hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-102 hover:bg-[#26c74c]"
         >
           <HiMagnifyingGlass />
         </button>
