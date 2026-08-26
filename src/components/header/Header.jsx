@@ -1,6 +1,7 @@
 import { BsCart4 } from "react-icons/bs";
 import { GoHeart } from "react-icons/go";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -23,19 +24,19 @@ export default function Header() {
             </div>
           </div>
           <div className="flex lg:hidden items-center gap-3 min-[330px]:gap-4 pr-3 min-[330px]:pr-5">
-            <div className="relative">
+            <Link to="/wishlist" className="relative">
               <GoHeart className="text-[#666666] w-5 h-5 min-[330px]:w-6 min-[330px]:h-6" />
               <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold">
                 0
               </span>
-            </div>
+            </Link>
 
-            <div className="relative">
+            <Link to="/cart" className="relative">
               <BsCart4 className="text-[#666666] w-5 h-6" />
               <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold">
                 0
               </span>
-            </div>
+            </Link>
 
             <img
               className="w-8 h-8 min-[330px]:w-9 min-[330px]:h-9 rounded-full border border-[#6666666E]"
@@ -48,18 +49,18 @@ export default function Header() {
           <SearchBar />
         </div>
         <div className="hidden lg:flex items-center justify-center gap-5 mr-8">
-          <div className="relative">
+          <Link to="/wishlist" className="relative">
             <GoHeart className="text-[#666666] w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-103" />
             <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold">
               0
             </span>
-          </div>
-          <div className="relative">
+          </Link>
+          <Link to="/cart" className="relative">
             <BsCart4 className="text-[#666666] w-5 h-6 hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-105" />
             <span className="absolute -top-2 -right-2 flex items-center justify-center min-w-4 h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold">
               0
             </span>
-          </div>
+          </Link>
           <div className="flex justify-center items-center gap-1">
             <img
               className="w-11 h-11 rounded-full border border-[#6666666E]"

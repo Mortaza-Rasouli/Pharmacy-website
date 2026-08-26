@@ -3,6 +3,7 @@ import { FaFacebookF, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
 import { FiInstagram } from "react-icons/fi";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineMail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const dataContact = [
@@ -77,7 +78,7 @@ export default function Footer() {
 
           <div
             className="
-              flex flex-co l sm:contents md:contents lg:flex lg:flex-row lg:gap-20"
+              flex flex-col sm:contents md:contents lg:flex lg:flex-row lg:gap-20"
           >
             {data.map((item) => (
               <div key={item.id} className="min-w-0">
@@ -86,21 +87,24 @@ export default function Footer() {
                     {item.title}
                   </h1>
 
-                  <div className="space-y-2 min-[330px]:space-y-2">
-                    {item.items.map((item) => (
-                      <p
-                        key={item}
-                        className="text-[#E0EEF9] hover:cursor-pointer font-medium text-[13px] min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px]"
-                      >
-                        {item}
-                      </p>
-                    ))}
-                  </div>
+                  <Link to="/notfound">
+                    <div className="space-y-2 min-[330px]:space-y-2">
+                      {item.items.map((item) => (
+                        <p
+                          key={item}
+                          className="text-[#E0EEF9] hover:cursor-pointer font-medium text-[13px]
+                        min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px] hover:underline"
+                        >
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
-
+          {/* social media */}
           <div className="min-w-0 lg:shrink-0">
             <div className="space-y-3 min-[330px]:space-y-4">
               <h1 className="text-[#FFFFFF] font-semibold text-[18px] min-[330px]:text-[20px]">
@@ -108,21 +112,40 @@ export default function Footer() {
               </h1>
 
               <div className="flex flex-wrap gap-3 min-[330px]:gap-4 lg:gap-5">
-                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                <Link
+                  to="/notfound"
+                  className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex 
+                justify-center items-center border-[#FFFFFF] rounded-full
+               hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300 ease-linear hover:scale-110 cursor-pointer"
+                >
                   <FaFacebookF className="w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 text-[#FFFFFF]" />
-                </div>
+                </Link>
 
-                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                <Link
+                  to="/notfound"
+                  className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center
+                 items-center border-[#FFFFFF] rounded-full
+                hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300 ease-linear hover:scale-110 cursor-pointer"
+                >
                   <FaLinkedinIn className="w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 text-[#FFFFFF]" />
-                </div>
+                </Link>
 
-                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                <Link
+                  to="/notfound"
+                  className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center
+                 items-center border-[#FFFFFF] rounded-full
+                 cursor-pointer hover:bg-[#E4405F] hover:border-[#E4405F] transition-all duration-300 ease-linear hover:scale-110"
+                >
                   <FiInstagram className="w-5 h-5 min-[330px]:w-6 min-[330px]:h-6 text-[#FFFFFF]" />
-                </div>
+                </Link>
 
-                <div className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center items-center border-[#FFFFFF] rounded-full">
+                <Link
+                  to="/notfound"
+                  className="w-9 h-9 min-[330px]:w-10 min-[330px]:h-10 border-2 flex justify-center
+                 items-center border-[#FFFFFF] rounded-full hover:scale-107 cursor-pointer hover:border-[#FF0000] hover:bg-[#FF0000] transition-all duration-300 ease-linear"
+                >
                   <AiFillYoutube className="w-6 h-5 min-[330px]:w-7 min-[330px]:h-6 text-[#FFFFFF]" />
-                </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -130,15 +153,8 @@ export default function Footer() {
 
         <div
           className="
-            flex flex-col
-            min-[330px]:flex-col
-            sm:flex-row
-            justify-between
-            items-start sm:items-center
-            gap-3 min-[330px]:gap-4 sm:gap-5
-            pt-6 min-[330px]:pt-7 sm:pt-8
-            lg:mt-0
-          "
+            flex flex-col min-[330px]:flex-col sm:flex-row justify-between items-start sm:items-center
+             gap-3 min-[330px]:gap-4 sm:gap-5 pt-6 min-[330px]:pt-7 sm:pt-8 lg:mt-0"
         >
           <p className="text-[#E0EEF9] text-[11px] min-[330px]:text-[12px] sm:text-[14px] lg:text-[16px] font-normal">
             © 2023 HEALTHY. All rights reserved.
