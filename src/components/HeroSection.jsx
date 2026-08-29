@@ -1,4 +1,5 @@
 import { BsCart4 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const data = {
@@ -21,12 +22,14 @@ is a prescription for savings.`,
         <p className="text-[#CCE5FF] font-normal lg:whitespace-pre- sm:whitespace-pre-line text-[11px] min-[330px]:text-[12px] min-[350px]:text-[13px] sm:text-[14px] lg:text-[16px] leading-5 min-[330px]:leading-6 lg:leading-normal">
           {data.desc}
         </p>
-        <button className="bg-[#FFFFFF] rounded-lg w-36 min-[330px]:w-40 sm:w-43 h-10 min-[330px]:h-11 flex justify-center items-center gap-2 min-[330px]:gap-3 transition-all duration-500 hover:scale-103 hover:cursor-pointer">
-          <p className="text-[#28A745] text-[12px] min-[330px]:text-[13px] sm:text-[16px] font-semibold">
-            {data.btnText}
-          </p>
-          <BsCart4 className="text-[#28A745] h-5 w-5 min-[330px]:h-5 min-[330px]:w-5 sm:h-6" />
-        </button>
+        <Link to="/notfound">
+          <button className="bg-[#FFFFFF] rounded-lg w-36 min-[330px]:w-40 sm:w-43 h-10 min-[330px]:h-11 flex justify-center items-center gap-2 min-[330px]:gap-3 transition-all duration-500 hover:scale-103 hover:cursor-pointer">
+            <p className="text-[#28A745] text-[12px] min-[330px]:text-[13px] sm:text-[16px] font-semibold">
+              {data.btnText}
+            </p>
+            <BsCart4 className="text-[#28A745] h-5 w-5 min-[330px]:h-5 min-[330px]:w-5 sm:h-6" />
+          </button>
+        </Link>
       </div>
       <img
         src={data.img}

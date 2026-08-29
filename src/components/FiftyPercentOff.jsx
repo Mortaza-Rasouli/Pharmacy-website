@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function FiftyPercentOff() {
   const data = [
     {
@@ -29,14 +31,16 @@ pharmacy. Your health matters, and so does your budget.`,
             <p className="lg:whitespace-pre-line text-[#373D45] font-normal text-[12px] min-[330px]:text-[13px] sm:text-[16px] leading-relaxed">
               {item.desc}
             </p>
-            <button
-              className="bg-[#28A745] rounded-md text-[#FFFFFF] text-[13px] 
-            min-[330px]:text-[14px] sm:text-[16px] font-medium px-3.5 min-[330px]:px-4.5
-             py-2 min-[330px]:py-2.5
-             hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-103 hover:bg-[#26c74c]"
-            >
-              {item.btnText} →
-            </button>
+            <Link to="/notfound">
+              <button
+                className="bg-[#28A745] rounded-md text-[#FFFFFF] text-[13px] 
+              min-[330px]:text-[14px] sm:text-[16px] font-medium px-3.5 min-[330px]:px-4.5
+              py-2 min-[330px]:py-2.5
+              hover:cursor-pointer transition-all duration-300 ease-linear hover:scale-103 hover:bg-[#26c74c]"
+              >
+                {item.btnText} →
+              </button>
+            </Link>
           </div>
           <div className="w-full md:w-[42%] h-45 min-[330px]:h-50 sm:h-60 md:h-full flex justify-center md:justify-end items-center mt-5 md:mt-0">
             <img

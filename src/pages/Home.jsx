@@ -11,24 +11,53 @@ import PopularProducts from "../components/PopularProducts";
 import Statistics from "../components/Statistics";
 import TopProducts from "../components/TopProducts";
 import UpcomingProducts from "../components/UpcomingProducts";
-
-export default function Home() {
+export default function Home({
+  favorite,
+  setFavorite,
+  buyProduct,
+  setBuyProduct,
+}) {
   return (
     <>
       <div>
-        <Header />
+        <Header favorite={favorite} buyProduct={buyProduct} />
         <HeroSection />
+        <NewProducts
+          setFavorite={setFavorite}
+          favorite={favorite}
+          buyProduct={buyProduct}
+          setBuyProduct={setBuyProduct}
+        />
         <Offers />
-        <NewProducts />
-        <PopularProducts />
+        <PopularProducts
+          setFavorite={setFavorite}
+          favorite={favorite}
+          buyProduct={buyProduct}
+          setBuyProduct={setBuyProduct}
+        />
         <OffersProducts />
-        <TopProducts />
+        <TopProducts
+          setFavorite={setFavorite}
+          favorite={favorite}
+          buyProduct={buyProduct}
+          setBuyProduct={setBuyProduct}
+        />
         <Statistics />
-        <MedicalProducts />
-        <UpcomingProducts />
+        <MedicalProducts
+          favorite={favorite}
+          setFavorite={setFavorite}
+          buyProduct={buyProduct}
+          setBuyProduct={setBuyProduct}
+        />
+        <UpcomingProducts
+          favorite={favorite}
+          setFavorite={setFavorite}
+          buyProduct={buyProduct}
+          setBuyProduct={setBuyProduct}
+        />
         <FiftyPercentOff />
         <NewsAndBlogs />
-        <Footer /> 
+        <Footer />
       </div>
     </>
   );
