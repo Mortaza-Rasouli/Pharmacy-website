@@ -1,3 +1,5 @@
+import { IoChevronForward } from "react-icons/io5";
+
 export default function Offers() {
   const data = [
     {
@@ -45,7 +47,9 @@ Advice`,
               {item.title}
             </h3>
           </div>
-          <span className="text-[#020A13] font-extrabold pr-4">&gt;</span>
+          <span className="text-[#020A13] font-extrabold pr-4">
+            <IoChevronForward />
+          </span>
         </div>
       ))}
     </div>
