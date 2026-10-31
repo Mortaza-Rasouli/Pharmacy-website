@@ -1,16 +1,36 @@
-# React + Vite
+# Medico Store – Pharmacy Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + Vite + Tailwind CSS v4 + React Router 7.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+pnpm install
+pnpm dev       # start dev server
+pnpm build     # production build
+pnpm lint      # eslint
+```
 
-## React Compiler
+## Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+  components/      shared UI (Header, Footer, ProductCard, ProductSection, …)
+  context/         cart & wishlist store (persisted in localStorage)
+  data/            products, categories, site info / navigation
+  hooks/           useStore()
+  pages/           Home, Products, Cart, Wishlist, About, Services,
+                   Careers, Contact, Login, NotFound
+```
 
-## Expanding the ESLint configuration
+Cart and wishlist live in `StoreProvider` and are read anywhere with `useStore()`.
+Products are defined once in `src/data/products.js`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Deploying
+
+This is a single-page app: configure your host to rewrite all routes to `index.html`.
+
+## Still to connect
+
+- Login / Register and Contact form submit handlers (`TODO` comments mark the spots).
+- Checkout (the cart's button currently leads to the sign-in page).

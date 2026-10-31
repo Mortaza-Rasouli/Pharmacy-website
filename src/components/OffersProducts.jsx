@@ -1,130 +1,124 @@
-export default function OffersProducts() {
-  const dataDivLeft = [
-    {
-      id: 1,
-      DiscountAmount: 25,
-      name: "BLACK GARLIC OIL",
-      desc: `Stronger and Thicker
-Hair With Black Garlic
-Oil.`,
-      previousPrice: 37.0,
-      currentPrice: 23.0,
-      text: "Including Tax",
-      img: "/images/kara-sarimsak-yagi.png",
-    },
-  ];
+import { Link } from "react-router-dom";
+import Container from "./Container";
+import { formatPrice } from "../data/products";
 
-  const dataDivRight = [
-    {
-      id: 1,
-      DiscountAmount: 25,
-      name: "Dental Care Set for Vivid and Bright Smiles",
-      bgColor: "bg-[#FDF7E8]",
-      previousPrice: 33.9,
-      currentPrice: 22.9,
-      text: "Including Tax",
-      img: "/images/muz.aromali.dis.png",
-    },
-    {
-      id: 2,
-      DiscountAmount: 25,
-      name: "BANANA FLAVOURED TOOTHPASTE",
-      bgColor: "bg-[#E8FFE7]/60",
-      previousPrice: 37.0,
-      currentPrice: 23.0,
-      text: "Including Tax",
-      img: "/images/disbeyazlaticiset.png",
-    },
-  ];
+const featured = {
+  id: 1,
+  name: "BLACK GARLIC OIL",
+  desc: "Stronger and Thicker Hair With Black Garlic Oil.",
+  previousPrice: 37.0,
+  currentPrice: 23.0,
+  text: "Including Tax",
+  bgColor: "bg-[#F1FAFE]",
+  img: "/images/kara-sarimsak-yagi.png",
+};
 
+const small = [
+  {
+    id: 2,
+    name: "Dental Care Set for Vivid and Bright Smiles",
+    previousPrice: 33.9,
+    currentPrice: 22.9,
+    text: "Including Tax",
+    bgColor: "bg-[#FDF7E8]",
+    img: "/images/muz.aromali.dis.png",
+  },
+  {
+    id: 3,
+    name: "BANANA FLAVOURED TOOTHPASTE",
+    previousPrice: 37.0,
+    currentPrice: 23.0,
+    text: "Including Tax",
+    bgColor: "bg-[#E8FFE7]/60",
+    img: "/images/disbeyazlaticiset.png",
+  },
+];
+
+const discount = (item) =>
+  Math.round((1 - item.currentPrice / item.previousPrice) * 100);
+
+function PromoCard({ item, large = false }) {
   return (
-    <div className="w-full flex justify-center mt-8 min-[330px]:mt-10 sm:mt-12 px-4 min-[330px]:px-5 sm:px-6 md:px-8 lg:px-14">
-      <div className="flex flex-col md:flex-row gap-4 w-full max-w-300">
-        {/* left cart */}
-        <div className="w-full md:w-3/5 h-90 min-[330px]:h-90 sm:h-110 md:h-105 lg:h-115">
-          {dataDivLeft.map((item) => (
-            <div
-              key={item.id}
-              className="relative w-full h-full bg-[#F1FAFE] rounded-[14px] overflow-hidden"
-            >
-              <div className="absolute inset-y-0 left-0 w-full">
-                <div className="relative z-10 h-full w-[58%] min-[330px]:w-[55%] sm:w-[50%] flex flex-col justify-start pt-2 min-[330px]:pt-14 sm:pt-16 md:pt-14 lg:pt-15 lg:gap-2 pl-4 min-[330px]:pl-6 pr-2">
-                  <p className="self-start bg-[#28A745] px-3 min-[330px]:px-4 py-1 min-[330px]:py-1.5 rounded-lg text-white font-medium text-[12px] min-[330px]:text-[14px] sm:text-[16px]">
-                    {item.DiscountAmount}% OFF
-                  </p>
+    <Link
+      to="/products"
+      className={`group flex h-full overflow-hidden rounded-[14px] ${item.bgColor} ${
+        large ? "min-h-72 sm:min-h-96 md:min-h-[26rem]" : "min-h-52 sm:min-h-56"
+      }`}
+    >
+      <div
+        className={`flex w-[58%] min-w-0 flex-col justify-center gap-1.5 py-5 pl-4 pr-1 sm:w-[55%] ${
+          large ? "min-[330px]:pl-6 sm:gap-2 sm:pl-8" : "min-[330px]:pl-5"
+        }`}
+      >
+        <span
+          className={`self-start rounded-lg bg-brand font-medium text-white ${
+            large
+              ? "px-3 py-1 text-[12px] sm:px-4 sm:py-1.5 sm:text-[16px]"
+              : "px-2.5 py-1 text-[11px] sm:text-[14px]"
+          }`}
+        >
+          {discount(item)}% OFF
+        </span>
 
-                  <h1 className="text-[#020A13] font-bold text-2xl min-[330px]:text-xl sm:text-4xl mt-2 min-[330px]:mt-3 leading-tight wrap-break-word">
-                    {item.name}
-                  </h1>
+        <h3
+          className={`break-words font-bold leading-tight text-ink ${
+            large
+              ? "mt-2 text-xl min-[330px]:text-2xl sm:text-3xl lg:text-4xl"
+              : "mt-1 text-[16px] font-semibold sm:text-[18px] lg:text-[19px]"
+          }`}
+        >
+          {item.name}
+        </h3>
 
-                  <p className="text-[#020A13] leading-tight font-semibold text-[17px] min-[330px]:text-[18px] sm:text-[24px] lg:text-[26px] lg:whitespace-pre-line mt-2 wrap-break-word">
-                    {item.desc}
-                  </p>
+        {item.desc && (
+          <p className="mt-1 text-[15px] font-semibold leading-tight text-ink sm:text-[20px] lg:text-[24px]">
+            {item.desc}
+          </p>
+        )}
 
-                  <p className="text-[#373D45] text-[13px] min-[330px]:text-[14px] sm:text-[16px] font-medium line-through mt-2">
-                    ${item.previousPrice.toFixed(2)}
-                  </p>
+        <p className={`font-medium text-copy line-through ${large ? "mt-1 text-[14px] sm:text-[16px]" : "text-[12px]"}`}>
+          {formatPrice(item.previousPrice)}
+        </p>
 
-                  <div className="flex items-center lg:w-full min-[330px]:w-50 min-w-0 lg:mt-1 min-[330px]:mt-4 gap-2 min-[330px]:gap-2">
-                    <p className="shrink-0 text-[#020A13] font-extrabold text-2xl min-[330px]:text-3xl whitespace-nowrap">
-                      ${item.currentPrice.toFixed(2)}
-                    </p>
-
-                    <p className="min-w-0 flex-1 text-[#020A13] text-[11px] min-[330px]:text-[12px] sm:text-[16px] wrap-break-word">
-                      {item.text}
-                    </p>
-                  </div>
-                </div>
-
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="absolute lg:-right-15 bottom-10 min-[330px]:-right-12 h-55 min-[330px]:h-60 sm:h-75 md:h-70 lg:h-110 object-contain"
-                />
-              </div>
-            </div>
-          ))}
+        <div className="flex min-w-0 flex-wrap items-baseline gap-x-2">
+          <span
+            className={`whitespace-nowrap font-extrabold text-ink ${
+              large ? "text-2xl min-[330px]:text-3xl" : "text-[18px] sm:text-[20px]"
+            }`}
+          >
+            {formatPrice(item.currentPrice)}
+          </span>
+          <span className="text-[11px] text-ink sm:text-[14px]">{item.text}</span>
         </div>
-        {/* right carts */}
-        <div className="w-full md:w-2/5 h-auto flex flex-col gap-4">
-          {dataDivRight.map((item) => (
-            <div
-              key={item.id}
-              className={`relative w-full h-55 min-[330px]:h-60 sm:h-65 md:h-50 lg:h-51.5 ${item.bgColor} rounded-[14px] overflow-hidden`}
-            >
-              <div className="relative z-10 lg:gap-1 min-[330px]:gap-1.5 h-full w-[55%] min-[330px]:w-[54%] sm:w-[55%] flex flex-col  min-[330px]:pt-8 sm:pt-9 md:pt-7 lg:pt-8 pl-3 min-[330px]:pl-4 pr-1">
-                <p className="self-start bg-[#28A745] px-2 min-[330px]:px-3 py-1 rounded-lg text-white font-medium text-[11px] min-[330px]:text-[12px] sm:text-[14px]">
-                  {item.DiscountAmount}% OFF
-                </p>
+      </div>
 
-                <h1 className="text-[#020A13] font-semibold text-[17px] min-[330px]:text-[18px] sm:text-[20px] leading-5 sm:leading-6 mt-2 wrap-break-word">
-                  {item.name}
-                </h1>
+      <div className="flex w-[42%] items-center justify-center p-2 sm:w-[45%]">
+        <img
+          src={item.img}
+          alt={item.name}
+          loading="lazy"
+          className={`max-w-full object-contain transition-transform duration-500 group-hover:scale-105 ${
+            large ? "max-h-64 sm:max-h-80 lg:max-h-96" : "max-h-36 sm:max-h-44"
+          }`}
+        />
+      </div>
+    </Link>
+  );
+}
 
-                <p className="text-[#373D45] font-medium text-[11px] min-[330px]:text-[12px] line-through mt-2">
-                  ${item.previousPrice.toFixed(2)}
-                </p>
-
-                <div className="flex items-center lg:w-full min-[330px]:w-40 min-w-0 mt-1.5 gap-2 min-[330px]:gap-3">
-                  <p className="text-[#020A13] font-extrabold text-[18px] min-[330px]:text-[20px] shrink-0 whitespace-nowrap">
-                    ${item.currentPrice.toFixed(2)}
-                  </p>
-
-                  <p className="text-[#020A13] text-[11px] min-[330px]:text-[12px] sm:text-[14px] min-w-0 wrap-break-word">
-                    {item.text}
-                  </p>
-                </div>
-              </div>
-
-              <img
-                src={item.img}
-                alt={item.name}
-                className="absolute right-1 min-[330px]:right-2 sm:right-3 top-9 min-[330px]:top-10 w-24 min-[330px]:w-28 sm:w-32 md:w-30 lg:w-32 h-28 min-[330px]:h-32 sm:h-34 md:h-32 lg:h-34 object-contain"
-              />
-            </div>
+export default function OffersProducts() {
+  return (
+    <Container className="mt-8 min-[330px]:mt-10 sm:mt-12">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+        <div className="md:col-span-3">
+          <PromoCard item={featured} large />
+        </div>
+        <div className="grid gap-4 md:col-span-2 md:grid-rows-2">
+          {small.map((item) => (
+            <PromoCard key={item.id} item={item} />
           ))}
         </div>
       </div>
-    </div>
+    </Container>
   );
 }

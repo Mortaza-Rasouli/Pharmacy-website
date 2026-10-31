@@ -2,11 +2,64 @@
 
 @font-face {
   font-family: "nunito";
-  src: url("./assets/fonts/Nunito-VariableFont_wght.ttf")
-    format("truetype");
-  font-weight: 100 900;
+  src: url("./assets/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 1000;
   font-style: normal;
+  font-display: swap;
 }
+
+@theme {
+  --color-brand: #28a745;
+  --color-brand-hover: #218838;
+  --color-forest: #304d30;
+  --color-ink: #020a13;
+  --color-copy: #373d45;
+  --color-muted: #666666;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: "nunito", sans-serif;
+  font-family: "nunito", ui-sans-serif, system-ui, sans-serif;
+  color: #020a13;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keyboard focus ring for links & buttons only.
+   Form fields show a single green border + soft glow instead (see field classes). */
+:where(a, button, [role="tab"]):focus-visible {
+  outline: 2px solid #28a745;
+  outline-offset: 2px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(-14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-fade-in { animation: fade-in 0.2s ease-out both; }
+.animate-pop-in { animation: pop-in 0.25s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

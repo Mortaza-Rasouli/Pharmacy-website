@@ -1,41 +1,39 @@
-import { BsCart4 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { BsCart4 } from "react-icons/bs";
+
+const data = {
+  title: "Your Prescription for Affordable Health Solutions!",
+  desc: "Elevate your health journey with exclusive discounts and unparalleled convenience. Your path to well-being starts here, where every purchase is a prescription for savings.",
+  btnText: "Start Shopping",
+  img: "/images/doctor.png",
+};
 
 export default function HeroSection() {
-  const data = {
-    title: `Your Prescription for
-Affordable Health
-Solutions!`,
-    desc: `Elevate your health journey with exclusive discounts and unparalleled
-convenience. Your path to well-being starts here, where every purchase
-is a prescription for savings.`,
-    btnText: "Start Shopping",
-    img: "/images/doctor.png",
-  };
-
   return (
-    <section className="bg-[#304D30] relative overflow-hidden min-h-152.5 min-[330px]:min-h-150 sm:min-h-130 lg:h-122.5 lg:min-h-0">
-      <div className="relative z-10 px-4 min-[330px]:px-5 pt-8 min-[330px]:pt-9 pb-6 sm:px-8 sm:pt-10 sm:pb-8 lg:pl-15 lg:pt-12 lg:pb-0 space-y-4 min-[330px]:space-y-5 sm:space-y-6 lg:space-y-6">
-        <h1 className="text-[#FFFFFF] font-extrabold whitespace-pre-line text-[25px] min-[330px]:text-[28px] min-[350px]:text-[30px] sm:text-4xl lg:text-6xl leading-[1.2] min-[330px]:leading-tight">
-          {data.title}
-        </h1>
-        <p className="text-[#CCE5FF] font-normal lg:whitespace-pre- sm:whitespace-pre-line text-[11px] min-[330px]:text-[12px] min-[350px]:text-[13px] sm:text-[14px] lg:text-[16px] leading-5 min-[330px]:leading-6 lg:leading-normal">
-          {data.desc}
-        </p>
-        <Link to="/notfound">
-          <button className="bg-[#FFFFFF] rounded-lg w-36 min-[330px]:w-40 sm:w-43 h-10 min-[330px]:h-11 flex justify-center items-center gap-2 min-[330px]:gap-3 transition-all duration-500 hover:scale-103 hover:cursor-pointer">
-            <p className="text-[#28A745] text-[12px] min-[330px]:text-[13px] sm:text-[16px] font-semibold">
-              {data.btnText}
-            </p>
-            <BsCart4 className="text-[#28A745] h-5 w-5 min-[330px]:h-5 min-[330px]:w-5 sm:h-6" />
-          </button>
-        </Link>
+    <section className="overflow-hidden bg-forest">
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-4 px-4 pt-8 min-[330px]:px-5 min-[330px]:pt-9 sm:px-8 sm:pt-10 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-14 lg:pt-0">
+        <div className="relative z-10 w-full space-y-4 min-[330px]:space-y-5 sm:space-y-6 lg:w-[55%] lg:py-12">
+          <h1 className="text-[26px] font-extrabold leading-[1.2] text-white min-[330px]:text-[28px] sm:text-4xl lg:text-5xl xl:text-6xl">
+            {data.title}
+          </h1>
+          <p className="max-w-xl text-[13px] leading-6 text-[#CCE5FF] min-[330px]:text-[14px] sm:text-[15px] lg:text-[16px]">
+            {data.desc}
+          </p>
+          <Link
+            to="/products"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-white px-5 text-[14px] font-semibold text-brand transition-all duration-500 hover:scale-103 min-[330px]:h-11 min-[330px]:gap-3 sm:h-12 sm:text-[16px]"
+          >
+            {data.btnText}
+            <BsCart4 className="h-5 w-5 sm:h-6 sm:w-6" />
+          </Link>
+        </div>
+
+        <img
+          src={data.img}
+          alt="Smiling doctor"
+          className="-scale-x-100 h-60 w-60 shrink-0 self-center object-contain min-[350px]:h-64 min-[350px]:w-64 sm:h-72 sm:w-72 lg:h-[26rem] lg:w-[26rem] lg:self-end xl:h-[30rem] xl:w-[30rem]"
+        />
       </div>
-      <img
-        src={data.img}
-        alt="Doctor"
-        className="absolute object-contain rotate-y-180 h-56 w-56 min-[330px]:h-60 min-[330px]:w-60 min-[350px]:h-64 min-[350px]:w-64 left-1/2 -translate-x-1/2 bottom-0 sm:h-72 sm:w-72 sm:left-1/2 sm:-translate-x-1/2 sm:bottom-0 lg:h-110 lg:w-115 lg:left-auto lg:translate-x-0 lg:right-[5%] lg:bottom-0"
-      />
     </section>
   );
 }

@@ -1,221 +1,147 @@
-import { IoBagOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { IoAdd, IoBagOutline, IoRemove, IoTrashOutline } from "react-icons/io5";
+import Container from "../components/Container";
+import EmptyState from "../components/EmptyState";
+import useStore from "../hooks/useStore";
+import { formatPrice, getProductById } from "../data/products";
 
-export default function Cart({ buyProduct, setBuyProduct }) {
-  const data = [
-    {
-      id: 1,
-      img: "/images/pngegg13.png",
-      imgClass: "w-45 h-45",
-      name: "Foley Catheter",
-      price: 12.9,
-    },
-    {
-      id: 2,
-      img: "/images/pngwing.png",
-      imgClass: "w-33 h-45",
-      name: "Thermometer",
-      price: 8.98,
-    },
-    {
-      id: 3,
-      img: "/images/pngegg11.png",
-      imgClass: "w-45 h-45",
-      name: "Non-rebreather mask",
-      price: 3.32,
-    },
-    {
-      id: 4,
-      img: "/images/pngegg1.png",
-      imgClass: "w-45 h-45",
-      name: "Wound Dressing",
-      price: 24.78,
-    },
-    {
-      id: 5,
-      img: "/images/OxygenMask.png",
-      imgClass: "w-45 h-45",
-      name: "Foley Catheter",
-      price: 2.0,
-    },
-    {
-      id: 6,
-      img: "/images/SurgicalGloves.png",
-      imgClass: "w-45 h-45",
-      name: "Surgical Gloves",
-      price: 1.99,
-    },
-    {
-      id: 7,
-      img: "/images/MedicalMask.png",
-      imgClass: "h-45",
-      name: "Medical Mask",
-      price: 0.89,
-    },
-    {
-      id: 8,
-      img: "/images/HandSanitizer.png",
-      imgClass: "w-45 h-45",
-      name: "Hand Sanitizer",
-      price: 4.0,
-    },
-    {
-      id: 9,
-      img: "/images/HospitalBed.png",
-      imgClass: "w-45 h-45",
-      name: "Hospital Bed",
-      price: 109.89,
-    },
-    {
-      id: 10,
-      img: "/images/WalkerMobility.png",
-      imgClass: "w-40 h-45",
-      name: "Walker Mobility",
-      price: 12.8,
-    },
-    {
-      id: 11,
-      img: "/images/Wheelchair.png",
-      imgClass: "w-45 h-45",
-      name: "Wheelchair",
-      price: 30.0,
-    },
-    {
-      id: 12,
-      img: "/images/Crutches.png",
-      imgClass: "w-45 h-45",
-      name: "Crutches",
-      price: 24.78,
-    },
-    {
-      id: 13,
-      img: "/images/Sphygmomanometer.png",
-      imgClass: "w-45 h-45",
-      name: "Sphygmomanometer",
-      price: 15.09,
-    },
-    {
-      id: 14,
-      img: "/images/DigitalStethoscope.png",
-      imgClass: "w-45 h-45",
-      name: "Digital Stethoscope",
-      price: 29.99,
-    },
-    {
-      id: 15,
-      img: "/images/Glucometer.png",
-      imgClass: "w-45 h-44",
-      name: "Glucometer",
-      price: 12.08,
-    },
-    {
-      id: 16,
-      img: "/images/PulseOximeter.png",
-      imgClass: "w-42 h-45",
-      name: "Pulse Oximeter",
-      price: 30.0,
-    },
-    {
-      id: 17,
-      img: "/images/WoundDressing.png",
-      imgClass: "w-45 h-45",
-      name: "Wound Dressing",
-      price: 5.78,
-    },
-    {
-      id: 18,
-      img: "/images/IVCatheter.png",
-      imgClass: "w-42 h-45",
-      name: "IV Catheter",
-      price: 2.0,
-    },
-    {
-      id: 19,
-      img: "/images/BloodPressureCuff.png",
-      imgClass: "w-45 h-45",
-      name: "Blood Pressure Cuff",
-      price: 24.78,
-    },
-    {
-      id: 20,
-      img: "/images/ChestTube.png",
-      imgClass: "w-45 h-45",
-      name: "Chest Tube",
-      price: 58.56,
-    },
-  ];
+const FREE_SHIPPING_FROM = 50;
+const SHIPPING_FEE = 4.99;
 
-  const cartProducts = data.filter((item) => buyProduct.includes(item.id));
+export default function Cart() {
+  const { cart, setQuantity, removeFromCart, clearCart } = useStore();
 
-  const removeFromCart = (id) => {
-    setBuyProduct((prev) => prev.filter((itemId) => itemId !== id));
-  };
-  const removeAll = () => {
-    setBuyProduct([]);
-  };
+  const lines = cart
+    .map((item) => ({ product: getProductById(item.id), qty: item.qty }))
+    .filter((line) => line.product);
+
+  const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.qty, 0);
+  const shipping = subtotal === 0 || subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_FEE;
+  const total = subtotal + shipping;
 
   return (
-    <div className="flex flex-col mt-8 min-[330px]:mt-10 sm:mt-12 px-4 min-[330px]:px-5 sm:px-6 md:px-8 lg:px-14">
-      <div className="flex justify-between items-center pb-4">
-        <h1 className="text-[#020A13] font-bold text-xl min-[330px]:text-2xl sm:text-3xl">
+    <Container className="py-8 min-[330px]:py-10 sm:py-12">
+      <div className="flex items-center justify-between pb-4">
+        <h1 className="text-xl font-bold text-ink min-[330px]:text-2xl sm:text-3xl">
           Your Cart
         </h1>
-        {cartProducts.length === 0 ? (
-          ""
-        ) : (
+        {lines.length > 0 && (
           <button
-            onClick={() => removeAll()}
-            className="text-[#020A13] font-bold text-xl transition-all duration-300 ease-linear
-           cursor-pointer hover:scale-103 hover:text-red-500"
+            type="button"
+            onClick={clearCart}
+            className="cursor-pointer text-[15px] font-bold text-ink transition-all duration-300 ease-linear hover:scale-103 hover:text-red-500 sm:text-xl"
           >
             Delete All
           </button>
         )}
       </div>
 
-      {cartProducts.length === 0 ? (
-        <p className="text-[#666666] text-[14px] sm:text-[16px]">
-          Your cart is empty.
-        </p>
+      {lines.length === 0 ? (
+        <EmptyState
+          icon={IoBagOutline}
+          title="Your cart is empty"
+          text="Looks like you haven't added anything yet."
+        />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
-          {cartProducts.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col h-95 min-[330px]:h-100 sm:h-105 md:h-98 lg:h-98 w-full items-center
-              bg-[#FFFFFF] rounded-xl shadow drop-shadow-xl overflow-hidden
-              hover:cursor-pointer transition-all duration-300 ease-linear hover:-translate-y-2 hover:shadow-xl"
-            >
-              <div className="relative flex items-center justify-center h-60 md:h-57 lg:h-58 w-full shrink-0">
-                <img
-                  className={`${item.imgClass} object-contain mt-8 max-w-[80%] max-h-full`}
-                  src={item.img}
-                  alt={item.name}
-                />
-              </div>
-
-              <div className="w-full mt-6 p-3 space-y-1 border-t border-[#E8E8E8] shrink-0">
-                <h1 className="font-bold text-lg min-[330px]:text-xl sm:text-2xl md:text-xl lg:text-2xl text-[#020A13] truncate">
-                  {item.name}
-                </h1>
-
-                <p className="font-bold text-[#333333] text-[14px] sm:text-[16px]">
-                  ${item.price.toFixed(2)}
-                </p>
-              </div>
-
-              <button
-                onClick={() => removeFromCart(item.id)}
-                className="flex justify-center gap-2 items-center text-[#FFFFFF] font-bold
-                text-[14px] sm:text-[16px] bg-[#28A745] w-full h-10 min-h-10
-                rounded-b-xl shrink-0 mt-auto outline-none cursor-pointer"
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+          <ul className="space-y-4 lg:col-span-2">
+            {lines.map(({ product, qty }) => (
+              <li
+                key={product.id}
+                className="flex flex-col gap-4 rounded-xl bg-white p-4 shadow-md min-[480px]:flex-row min-[480px]:items-center"
               >
-                Remove from Cart
-                <IoBagOutline />
-              </button>
-            </div>
-          ))}
+                <div className="flex items-center gap-4 min-[480px]:flex-1 min-[480px]:min-w-0">
+                  <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-lg bg-[#F6FAFF] p-2">
+                    <img src={product.img} alt={product.name} className="max-h-full max-w-full object-contain" />
+                  </div>
+                  <div className="min-w-0">
+                    <h2 className="truncate text-lg font-bold text-ink">
+                      <Link to={`/products/${product.id}`} className="hover:text-brand">{product.name}</Link>
+                    </h2>
+                    <p className="text-[14px] text-muted">{formatPrice(product.price)} each</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-4 min-[480px]:justify-end">
+                  <div className="flex items-center rounded-lg border border-gray-300">
+                    <button
+                      type="button"
+                      aria-label={`Decrease quantity of ${product.name}`}
+                      disabled={qty <= 1}
+                      onClick={() => setQuantity(product.id, qty - 1)}
+                      className="flex h-9 w-9 cursor-pointer items-center justify-center text-lg hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <IoRemove />
+                    </button>
+                    <span className="w-9 text-center text-[15px] font-semibold" aria-live="polite">
+                      {qty}
+                    </span>
+                    <button
+                      type="button"
+                      aria-label={`Increase quantity of ${product.name}`}
+                      onClick={() => setQuantity(product.id, qty + 1)}
+                      className="flex h-9 w-9 cursor-pointer items-center justify-center text-lg hover:bg-gray-100"
+                    >
+                      <IoAdd />
+                    </button>
+                  </div>
+
+                  <p className="w-20 text-right text-[16px] font-bold text-ink">
+                    {formatPrice(product.price * qty)}
+                  </p>
+
+                  <button
+                    type="button"
+                    aria-label={`Remove ${product.name} from cart`}
+                    onClick={() => removeFromCart(product.id)}
+                    className="cursor-pointer text-xl text-muted transition-colors hover:text-red-500"
+                  >
+                    <IoTrashOutline />
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <aside className="h-fit rounded-xl bg-[#F6FAFF] p-5 sm:p-6 lg:sticky lg:top-44">
+            <h2 className="mb-4 text-xl font-bold text-ink">Order Summary</h2>
+            <dl className="space-y-3 text-[15px] text-copy">
+              <div className="flex justify-between">
+                <dt>Subtotal</dt>
+                <dd className="font-semibold">{formatPrice(subtotal)}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt>Shipping</dt>
+                <dd className="font-semibold">{shipping === 0 ? "Free" : formatPrice(shipping)}</dd>
+              </div>
+              <div className="flex justify-between border-t border-gray-300 pt-3 text-lg font-bold text-ink">
+                <dt>Total</dt>
+                <dd>{formatPrice(total)}</dd>
+              </div>
+            </dl>
+
+            {shipping > 0 && (
+              <p className="mt-3 text-[13px] text-muted">
+                Add {formatPrice(FREE_SHIPPING_FROM - subtotal)} more for free delivery.
+              </p>
+            )}
+
+            {/* Checkout needs a backend/auth; for now it sends the user to sign in. */}
+            <Link
+              to="/login"
+              className="mt-5 block rounded-lg bg-brand py-3 text-center text-[16px] font-bold text-white transition-colors hover:bg-brand-hover"
+            >
+              Proceed to Checkout
+            </Link>
+            <Link
+              to="/products"
+              className="mt-3 block text-center text-[14px] font-semibold text-brand hover:underline"
+            >
+              ← Continue Shopping
+            </Link>
+          </aside>
         </div>
       )}
-    </div>
+    </Container>
   );
 }
